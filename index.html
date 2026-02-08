@@ -3,113 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VAMSTV - NOVA ApeX Ventures Media</title>
+    <title>VAMSTV - NOVA ApeX Ventures Media Network</title>
     <style>
-        :root { --gold: #ffd700; --dark: #0a0a0a; --gray: #1a1a1a; }
-        body { background-color: var(--dark); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; }
+        :root { --gold: #ffd700; --dark: #0a0a0a; --gray: #1a1a1a; --light-gray: #222; }
+        body { background-color: var(--dark); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
         
-        /* HEADER & LOGO */
-        header { background: linear-gradient(to bottom, #222, #000); padding: 20px; text-align: center; border-bottom: 3px solid var(--gold); }
-        .logo-svg { width: 50px; height: 50px; fill: var(--gold); margin-bottom: 5px; }
-        .brand-name { font-size: 28px; font-weight: 900; color: var(--gold); letter-spacing: 4px; margin: 0; }
-        .tagline { font-size: 10px; color: #888; letter-spacing: 2px; text-transform: uppercase; }
+        /* HEADER & LOGO EMAS */
+        header { background: linear-gradient(to bottom, #222, #000); padding: 25px; text-align: center; border-bottom: 3px solid var(--gold); box-shadow: 0 4px 20px rgba(0,0,0,0.8); }
+        .logo-vams { width: 60px; height: 60px; fill: var(--gold); margin-bottom: 10px; filter: drop-shadow(0 0 5px var(--gold)); }
+        .brand-name { font-size: 30px; font-weight: 900; color: var(--gold); letter-spacing: 5px; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .tagline { font-size: 11px; color: #888; letter-spacing: 2px; text-transform: uppercase; margin-top: 5px; }
 
-        /* NAVIGASI SALURAN */
-        .ch-nav { display: flex; justify-content: center; background: var(--gray); padding: 10px; gap: 8px; sticky; top: 0; z-index: 99; overflow-x: auto; }
-        .btn-ch { background: #333; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 11px; white-space: nowrap; transition: 0.3s; }
-        .btn-ch:hover, .btn-ch.active { background: var(--gold); color: black; }
+        /* NAVIGASI SALURAN (STYLE TRANSMEDIA) */
+        .ch-nav { display: flex; justify-content: center; background: var(--gray); padding: 12px; gap: 10px; position: sticky; top: 0; z-index: 100; overflow-x: auto; border-bottom: 1px solid #333; }
+        .btn-ch { background: #333; color: white; border: 1px solid #444; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 12px; white-space: nowrap; transition: 0.3s; }
+        .btn-ch:hover, .btn-ch.active { background: var(--gold); color: black; border-color: var(--gold); transform: translateY(-2px); }
 
-        /* PLAYER AREA */
-        .player-section { width: 100%; max-width: 900px; margin: auto; }
-        .screen { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
-        .screen iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        /* AREA PEMUTAR VIDEO UTAMA */
+        .player-section { width: 100%; max-width: 960px; margin: auto; background: #000; }
+        .screen-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-bottom: 2px solid #222; }
+        .screen-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        /* INFO & JADWAL */
-        .container { padding: 20px; max-width: 900px; margin: auto; }
-        .status-bar { background: #111; padding: 15px; border-radius: 8px; border-left: 4px solid var(--gold); margin-bottom: 20px; }
-        .grid-schedule { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
-        .card { background: var(--gray); padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #333; }
-        .time { color: var(--gold); font-weight: bold; display: block; }
+        /* STATUS SIARAN */
+        .container { padding: 20px; max-width: 960px; margin: auto; }
+        .status-bar { background: #111; padding: 15px 20px; border-radius: 10px; border-left: 5px solid var(--gold); margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        
+        /* JADWAL GRID (STYLE SCTV) */
+        .section-title { color: var(--gold); border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 15px; letter-spacing: 1px; }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 30px; }
+        .card { background: var(--light-gray); padding: 15px; border-radius: 8px; border: 1px solid #333; transition: 0.3s; }
+        .card:hover { border-color: var(--gold); background: #282828; }
+        .time { color: var(--gold); font-weight: bold; font-size: 18px; display: block; margin-bottom: 5px; }
+        .prog { font-size: 13px; font-weight: 500; color: #eee; }
 
-        /* PANEL PEMBAYARAN */
-        .pay-panel { background: linear-gradient(135deg, #ffd700, #ffae00); color: black; padding: 30px; border-radius: 15px; text-align: center; margin-top: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .btn-wa { background: black; color: white; padding: 15px 30px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; margin-top: 15px; font-size: 16px; }
+        /* VIDEO ON-DEMAND (VOD) */
+        .vod-card { background: #000; border-radius: 8px; overflow: hidden; cursor: pointer; border: 1px solid #222; }
+        .vod-card img { width: 100%; height: auto; display: block; opacity: 0.8; }
+        .vod-card:hover img { opacity: 1; }
+        .vod-info { padding: 10px; font-size: 12px; text-align: center; font-weight: bold; }
+
+        /* PANEL PEMBAYARAN GOPAY */
+        .payment-card { background: linear-gradient(135deg, #ffd700 0%, #ffae00 100%); color: black; padding: 35px 20px; border-radius: 20px; text-align: center; margin: 40px 0; box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .price-tag { font-size: 36px; font-weight: 900; margin: 15px 0; text-shadow: 1px 1px 0px rgba(255,255,255,0.5); }
+        .btn-pay { background: black; color: white; padding: 18px 40px; border: none; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
+        .btn-pay:hover { transform: scale(1.05); background: #333; }
 
         /* FOOTER */
-        footer { text-align: center; padding: 40px; font-size: 12px; color: #666; border-top: 1px solid #222; }
+        footer { text-align: center; padding: 50px 20px; background: #050505; color: #555; font-size: 12px; border-top: 1px solid #111; }
     </style>
 </head>
 <body>
 
 <header>
-    <svg class="logo-svg" viewBox="0 0 100 100">
-        <path d="M20 20 L50 80 L80 20" fill="none" stroke="gold" stroke-width="10" stroke-linecap="round"/>
-        <circle cx="50" cy="50" r="45" fill="none" stroke="gold" stroke-width="2" stroke-dasharray="5,5"/>
+    <svg class="logo-vams" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="48" fill="none" stroke="gold" stroke-width="2" stroke-dasharray="4"/>
+        <path d="M25 30 L50 75 L75 30" fill="none" stroke="gold" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M40 30 L50 45 L60 30" fill="none" stroke="gold" stroke-width="4" stroke-linecap="round"/>
     </svg>
     <h1 class="brand-name">VAMSTV</h1>
-    <div class="tagline">Digital Ventures Media Network</div>
+    <div class="tagline">NOVA ApeX Ventures Media • Global Digital Network</div>
 </header>
 
-<div class="ch-nav">
-    <button class="btn-ch active" onclick="ch('PRIME', 'https://www.youtube.com/embed/jfKfPfyJRdk')">VAMSTV PRIME</button>
-    <button class="btn-ch" onclick="ch('NEWS', 'https://www.youtube.com/embed/vM7hZ_6BjtU')">VAMSTV NEWS</button>
-    <button class="btn-ch" onclick="ch('SPORTS', 'https://www.youtube.com/embed/Sc6m9p8p1F4')">VAMSTV SPORTS</button>
-</div>
+<nav class="ch-nav">
+    <button class="btn-ch active" onclick="changeCh('PRIME', 'jfKfPfyJRdk')">VAMSTV PRIME</button>
+    <button class="btn-ch" onclick="changeCh('NEWS', 'vM7hZ_6BjtU')">VAMSTV NEWS</button>
+    <button class="btn-ch" onclick="changeCh('SPORTS', 'Sc6m9p8p1F4')">VAMSTV SPORTS</button>
+</nav>
 
-<div class="player-section">
-    <div class="screen">
-        <iframe id="tvFrame" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1" allowfullscreen></iframe>
+<section class="player-section">
+    <div class="screen-container">
+        <iframe id="mainFrame" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&mute=0" allowfullscreen allow="autoplay"></iframe>
     </div>
-</div>
+</section>
 
 <div class="container">
     <div class="status-bar">
-        <h3 id="live-title" style="margin:0;">🔴 LIVE: VAMSTV PRIME</h3>
-        <p id="live-desc" style="margin:5px 0 0 0; color:#aaa; font-size:13px;">Menyiarkan Konten Hiburan & Lifestyle Premium</p>
+        <h3 id="now-playing" style="margin:0; color:var(--gold);">🔴 SEKARANG TAYANG: VAMSTV PRIME</h3>
+        <p id="now-desc" style="margin:5px 0 0 0; color:#aaa; font-size:14px;">Menyajikan konten hiburan keluarga, film eksklusif, dan gaya hidup.</p>
     </div>
 
-    <h4>📅 JADWAL UNGGULAN HARI INI</h4>
-    <div class="grid-schedule">
-        <div class="card"><span class="time">07:00</span><b>VAMS Morning</b></div>
-        <div class="card"><span class="time">13:00</span><b>Tech Ventures</b></div>
-        <div class="card"><span class="time">19:00</span><b>Mega Cinema</b></div>
-        <div class="card"><span class="time">22:00</span><b>Night Sports</b></div>
+    <h4 class="section-title">📅 JADWAL ACARA HARI INI</h4>
+    <div class="grid-layout">
+        <div class="card"><span class="time">08:00</span><span class="prog">VAMS Morning Spirit</span></div>
+        <div class="card"><span class="time">12:00</span><span class="prog">Tech & Business Talk</span></div>
+        <div class="card"><span class="time">19:00</span><span class="prog">Mega Cinema Prime</span></div>
+        <div class="card"><span class="time">21:00</span><span class="prog">Apex Ventures Night</span></div>
     </div>
 
-    <div class="pay-panel">
-        <h2 style="margin:0;">PAKET CORPORATE VIP</h2>
-        <p>Akses Eksklusif 3 Saluran Tanpa Iklan</p>
-        <div style="font-size: 32px; font-weight: 900;">Rp 4.200.000<span style="font-size:14px;">/Tahun</span></div>
-        <button class="btn-wa" onclick="bayarWA()">BAYAR VIA GOPAY SEKARANG</button>
-        <p style="font-size:11px; margin-top:10px;">*Konfirmasi otomatis ke WhatsApp Admin VAMSTV</p>
+    <h4 class="section-title">🎬 VIDEO ON-DEMAND (VOD)</h4>
+    <div class="grid-layout">
+        <div class="vod-card" onclick="changeCh('REPLAY', 'jfKfPfyJRdk')">
+            <img src="https://img.youtube.com/vi/jfKfPfyJRdk/mqdefault.jpg">
+            <div class="vod-info">Company Profile NAVM</div>
+        </div>
+        <div class="vod-card" onclick="changeCh('REPLAY', 'Sc6m9p8p1F4')">
+            <img src="https://img.youtube.com/vi/Sc6m9p8p1F4/mqdefault.jpg">
+            <div class="vod-info">Sports Highlights</div>
+        </div>
+        <div class="vod-card" onclick="changeCh('REPLAY', 'vM7hZ_6BjtU')">
+            <img src="https://img.youtube.com/vi/vM7hZ_6BjtU/mqdefault.jpg">
+            <div class="vod-info">Business News Update</div>
+        </div>
+    </div>
+
+    <div class="payment-card">
+        <h2 style="margin:0; letter-spacing:2px;">PAKET CORPORATE VIP</h2>
+        <p style="font-weight:bold; opacity:0.8;">Akses Full HD 3 Saluran & Konten Eksklusif</p>
+        <div class="price-tag">Rp 4.200.000 <span style="font-size:16px;">/ TAHUN</span></div>
+        <button class="btn-pay" onclick="sendWA()">LANGGANAN VIA GOPAY</button>
+        <p style="font-size:11px; margin-top:15px; color: black; font-weight:bold;">Sistem enkripsi pembayaran aman melalui WhatsApp Bisnis VAMSTV</p>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2026 NOVA ApeX Ventures Media (NAVM). All Rights Reserved.</p>
-    <p>Broadcasting from Jakarta, Indonesia</p>
+    <p><b>VAMSTV - NOVA ApeX Ventures Media (NAVM)</b></p>
+    <p>Digital Penyiaran Masa Depan Tanpa Batas Perangkat.</p>
+    <p style="margin-top:20px; opacity:0.5;">&copy; 2026 PT. Nova Apex Media. Jakarta, Indonesia.</p>
 </footer>
 
 <script>
-    function ch(name, link) {
-        document.getElementById('tvFrame').src = link + "?autoplay=1";
-        document.getElementById('live-title').innerText = "🔴 LIVE: VAMSTV " + name;
+    // FUNGSI GANTI SALURAN & VIDEO
+    function changeCh(name, videoId) {
+        const frame = document.getElementById('mainFrame');
+        const title = document.getElementById('now-playing');
+        const desc = document.getElementById('now-desc');
         
-        // Update Active Button
-        const btns = document.querySelectorAll('.btn-ch');
-        btns.forEach(b => b.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-
-        if(name === 'NEWS') document.getElementById('live-desc').innerText = "Berita Bisnis, Teknologi, dan Global Terbaru.";
-        if(name === 'SPORTS') document.getElementById('live-desc').innerText = "Update Skor dan Siaran Langsung Olahraga Dunia.";
-        if(name === 'PRIME') document.getElementById('live-desc').innerText = "Menyiarkan Konten Hiburan & Lifestyle Premium.";
+        frame.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+        
+        if(name !== 'REPLAY') {
+            title.innerText = "🔴 SEKARANG TAYANG: VAMSTV " + name;
+            // Update Active Style
+            const btns = document.querySelectorAll('.btn-ch');
+            btns.forEach(b => b.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            if(name === 'NEWS') desc.innerText = "Informasi terkini mengenai bisnis, teknologi, dan perkembangan ekonomi global.";
+            if(name === 'SPORTS') desc.innerText = "Liputan eksklusif pertandingan olahraga dunia dan highlight gol terbaik.";
+            if(name === 'PRIME') desc.innerText = "Menyajikan konten hiburan keluarga, film eksklusif, dan gaya hidup.";
+        } else {
+            title.innerText = "🎞️ MEMUTAR ULANG (VOD)";
+            desc.innerText = "Anda sedang menonton konten pilihan dari arsip VAMSTV.";
+        }
     }
 
-    function bayarWA() {
-        // GANTI NOMOR DI BAWAH INI DENGAN NOMOR WA ANDA
-        const phone = "628XXXXXXXXXX"; 
-        const txt = "Halo Admin VAMSTV, saya tertarik berlangganan Paket Corporate (Rp 4.200.000). Mohon instruksi pembayaran via GoPay.";
-        window.open("https://api.whatsapp.com/send?phone=" + phone + "&text=" + encodeURIComponent(txt), "_blank");
+    // FUNGSI PEMBAYARAN WHATSAPP
+    function sendWA() {
+        // GANTI NOMOR DI BAWAH DENGAN NOMOR WA ANDA (Gunakan 628...)
+        const myNum = "628XXXXXXXXXX"; 
+        const text = "Halo Admin VAMSTV,\n\nSaya ingin berlangganan *Paket Corporate (Rp 4.200.000)*.\nMohon instruksi pembayaran via *GoPay* dan aktivasi akun saya.\n\nTerima kasih!";
+        
+        const url = "https://api.whatsapp.com/send?phone=" + myNum + "&text=" + encodeURIComponent(text);
+        window.open(url, '_blank');
     }
 </script>
 
