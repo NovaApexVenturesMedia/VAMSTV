@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA ApeX Ventures Media (NAVM) - Menghadirkan Tayangan Berkelas</title>
+    
+    <meta name="description" content="NOVA ApeX Ventures Media (NAVM) adalah perusahaan media digital terdepan yang mengelola VAMSTV.">
+    
+    <style>
+        :root { --gold: #ffd700; --dark-blue: #003366; --dark: #0a0a0a; }
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: white; color: #333; }
+
+        /* HEADER & NAVIGASI (Gaya SCM) */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 15px 5%; background: white; border-bottom: 2px solid var(--dark-blue);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .nav-brand { font-size: 24px; font-weight: 900; color: var(--dark-blue); letter-spacing: 2px; }
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-menu a { text-decoration: none; color: #444; font-weight: bold; font-size: 14px; text-transform: uppercase; }
+        .mobile-menu { display: none; font-size: 24px; color: var(--dark-blue); cursor: pointer; }
+
+        /* HERO SECTION (Gaya Screenshot Anda) */
+        .hero { 
+            position: relative; height: 80vh; 
+            background: linear-gradient(rgba(0,51,102,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1492691523567-611252199b45?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white; padding: 20px;
+        }
+        .hero h1 { font-size: 42px; margin: 0; line-height: 1.2; text-transform: uppercase; }
+        .hero p { font-size: 20px; max-width: 600px; margin: 20px 0; }
+        .btn-more { padding: 12px 30px; border: 2px solid white; color: white; text-decoration: none; font-weight: bold; border-radius: 5px; }
+
+        /* VAMSTV PLAYER SECTION */
+        .tv-section { background: var(--dark); padding: 50px 0; text-align: center; color: white; }
+        .player-box { width: 90%; max-width: 900px; margin: 20px auto; border: 4px solid var(--gold); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* UNIT USAHA (VOD/Jadwal) */
+        .services { padding: 50px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .service-card { border: 1px solid #ddd; border-radius: 10px; overflow: hidden; transition: 0.3s; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .service-info { padding: 20px; }
+
+        /* FOOTER PEMBAYARAN */
+        .payment-footer { background: var(--dark-blue); color: white; padding: 40px 5%; text-align: center; }
+        .btn-pay { background: var(--gold); color: black; padding: 15px 40px; border: none; font-weight: bold; border-radius: 50px; cursor: pointer; font-size: 18px; }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .mobile-menu { display: block; }
+            .hero h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-brand">NAVM</div>
+    <div class="nav-menu">
+        <a href="#tentang">Tentang Kami</a>
+        <a href="#usaha">Usaha Kami</a>
+        <a href="#tata-kelola">Tata Kelola</a>
+        <a href="#investor">Hubungan Investor</a>
+        <a href="#karir">Karir</a>
+    </div>
+    <div class="mobile-menu" onclick="toggleMenu()">☰</div>
+</header>
+
+<section class="hero">
+    <p style="color: var(--gold); font-weight: bold; letter-spacing: 2px;">NOVA ApeX Ventures Media</p>
+    <h1>MENGHADIRKAN TAYANGAN BERKELAS</h1>
+    <p>Dengan penyiaran dan konten yang berkualitas untuk masa depan digital Indonesia.</p>
+    <a href="#usaha" class="btn-more">Baca lebih lanjut</a>
+</section>
+
+<section class="tv-section" id="usaha">
+    <h2 style="color: var(--gold);">🔴 VAMSTV LIVE STREAMING</h2>
+    <div class="player-box">
+        <div class="video-container">
+            <iframe id="mainFrame" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <button style="padding:10px; background:var(--gold); border:none; font-weight:bold;" onclick="ch('jfKfPfyJRdk')">PRIME</button>
+        <button style="padding:10px; background:white; border:none; font-weight:bold;" onclick="ch('vM7hZ_6BjtU')">NEWS</button>
+        <button style="padding:10px; background:white; border:none; font-weight:bold;" onclick="ch('Sc6m9p8p1F4')">SPORTS</button>
+    </div>
+</section>
+
+<section class="services">
+    <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400" width="100%">
+        <div class="service-info">
+            <h3>PROFIL PERUSAHAAN</h3>
+            <p>NAVM berkomitmen membangun ekosistem media yang inklusif dan inovatif.</p>
+        </div>
+    </div>
+    <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=400" width="100%">
+        <div class="service-info">
+            <h3>LANGGANAN CORPORATE</h3>
+            <p>Paket eksklusif untuk mitra bisnis dan korporasi skala nasional.</p>
+        </div>
+    </div>
+</section>
+
+<section class="payment-footer">
+    <h2>SIAP BERGABUNG DENGAN JARINGAN MEDIA KAMI?</h2>
+    <p style="margin-bottom: 30px;">Paket Corporate (Rp 4.200.000/Tahun) atau Bulanan (Rp 60.000)</p>
+    <button class="btn-pay" onclick="sendWA()">DAFTAR & BAYAR VIA GOPAY</button>
+    <p style="font-size: 12px; margin-top: 20px; opacity: 0.7;">© 2026 PT. NOVA APEX MEDIA. JAKARTA, INDONESIA.</p>
+</section>
+
+<script>
+    function toggleMenu() {
+        alert("Menu: Tentang Kami, Usaha Kami, Tata Kelola, Karir");
+    }
+
+    function ch(id) {
+        document.getElementById('mainFrame').src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+    }
+
+    function sendWA() {
+        const phone = "628XXXXXXXXXX"; // GANTI DENGAN NOMOR WA BOS
+        const msg = "Halo Admin NAVM, saya ingin berlangganan paket tayangan berkelas VAMSTV via GoPay.";
+        window.open("https://api.whatsapp.com/send?phone=" + phone + "&text=" + encodeURIComponent(msg), "_blank");
+    }
+</script>
+
+</body>
+</html>
 
